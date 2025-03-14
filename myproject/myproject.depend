@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1739522132 source:c:\users\huuca\onedrive\desktop\propject\myproject\main.cpp
+	<bits/stdc++.h>
+
+1741009319 source:c:\users\huuca\onedrive\desktop\project\myproject\main.cpp
+	<iostream>
+	<SDL.h>
+
