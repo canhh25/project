@@ -88,7 +88,6 @@ public:
             }
         }
     }
-
     Game ()
     {
 
@@ -130,6 +129,7 @@ public:
         {
             walls[i].render(renderer);
         }
+        player.render(renderer);
         SDL_RenderPresent(renderer);
     }
     void handleEvents(){
@@ -141,8 +141,8 @@ public:
             switch (event.key.keysym.sym){
                 case SDLK_UP: player.move(0,-5,walls); break;
                 case SDLK_DOWN: player.move(0,5,walls); break;
-                case SDLK_RIGHT: player.move(-5,0,walls); break;
-                case SDLK_LEFT: player.move(5,0,walls); break;
+                case SDLK_RIGHT: player.move(5,0,walls); break;
+                case SDLK_LEFT: player.move(-5,0,walls); break;
             }
         }
     }
@@ -151,6 +151,7 @@ public:
     {
         while (running)
         {
+            handleEvents ();
             render ();
             SDL_Delay(16);
         }
