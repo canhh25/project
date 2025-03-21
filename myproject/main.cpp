@@ -53,7 +53,7 @@ public:
         y+=dy;
         rect.x=x;
         rect.y=y;
-        if(x<TILE_SIZE||x>SCREEN_WIDTH-TILE_SIZE||y<TILE_SIZE||y>SCREEN_HEIGHT-TILE_SIZE) active=false;
+        if(x<TILE_SIZE||x>SCREEN_WIDTH-TILE_SIZE||y<TILE_SIZE||y>SCREEN_HEIGHT-TILE_SIZE) active=false; //ra ngoài màn hình = xóa
     }
     void render(SDL_Renderer* renderer)
     {
@@ -94,7 +94,7 @@ public:
                 return; //ko cho đâm vào tường
             }
         }
-        if ((newX>=TILE_SIZE&&newY<=SCREEN_WIDTH-TILE_SIZE*2)&&(newY>=TILE_SIZE&&newY<=SCREEN_HEIGHT-TILE_SIZE*2))
+        if ((newX>=TILE_SIZE&&newX<=SCREEN_WIDTH-TILE_SIZE*2)&&(newY>=TILE_SIZE&&newY<=SCREEN_HEIGHT-TILE_SIZE*2))
         {
             x=newX;
             y=newY;
@@ -112,7 +112,7 @@ public:
         {
             bullet.move();
         }
-        bullets.erase(std::remove_if(bullets.begin(),bullets.end(),[](Bullet&b){return !b.active;}),bullets.end());
+        bullets.erase(remove_if(bullets.begin(),bullets.end(),[](Bullet&b){return !b.active;}),bullets.end());
     }
     void render (SDL_Renderer* renderer)
     {
@@ -127,14 +127,14 @@ public:
 class EnemyTank
 {
 public:
-    int x,y, dirX,dirY, moveDelay, shootDelay;
+    int x,y, dirX, dirY, moveDelay, shootDelay;
     SDL_Rect rect;
     bool active;
     vector<Bullet> bullets;
     EnemyTank(int startX, int startY)
     {
         moveDelay=15;
-        shootDelay=300;
+        shootDelay=30;
         x=startX;
         y=startY;
         rect= {x,y,TILE_SIZE,TILE_SIZE};
@@ -186,7 +186,7 @@ public:
     void shoot()
     {
         if(--shootDelay>0) return;
-        shootDelay=300;
+        shootDelay=100;
         bullets.push_back(Bullet(x+TILE_SIZE/2-5,y+TILE_SIZE/2-5,this->dirX,this->dirY));
     }
     void updateBullets()
@@ -195,7 +195,7 @@ public:
         {
             bullet.move();
         }
-        bullets.erase(std::remove_if(bullets.begin(),bullets.end(),[](Bullet &b){return !b.active;}),bullets.end());
+        bullets.erase(remove_if(bullets.begin(),bullets.end(),[](Bullet &b){return !b.active;}),bullets.end());
     }
     void render(SDL_Renderer* renderer)
     {
@@ -281,7 +281,6 @@ public:
             {
                 if (wall.active&&SDL_HasIntersection(&bullet.rect,&wall.rect))
                 {
-                    wall.active = false;
                     bullet.active=false;
                     break;
                 }
@@ -294,7 +293,6 @@ public:
                         enemy.shoot();
                         enemy.updateBullets();
                     if(wall.active&&SDL_HasIntersection(&bullet.rect,&wall.rect)){
-                        wall.active=false;
                         bullet.active=false;
                         break;
                     }
