@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <vector>
 #include <algorithm>
+#include <cstdlib>
 using namespace std;
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
@@ -111,10 +112,7 @@ public:
         {
             bullet.move();
         }
-        bullets.erase(std::remove_if(bullets.begin(),bullets.end(),[](Bullet&b)
-        {
-            return !b.active;
-        }),bullets.end());
+        bullets.erase(std::remove_if(bullets.begin(),bullets.end(),[](Bullet&b){return !b.active;}),bullets.end());
     }
     void render (SDL_Renderer* renderer)
     {
@@ -136,7 +134,7 @@ public:
     EnemyTank(int startX, int startY)
     {
         moveDelay=15;
-        shootDelay=15;
+        shootDelay=300;
         x=startX;
         y=startY;
         rect= {x,y,TILE_SIZE,TILE_SIZE};
@@ -147,7 +145,7 @@ public:
     void move(const vector <Wall> walls)
     {
         if(--moveDelay>0) return;
-        moveDelay=-15;
+        moveDelay=15;
         int r=rand()%4;
         switch (r)
         {
@@ -176,20 +174,19 @@ public:
             {
                 return;
             }
-        }
+        }//check va cham voi tuong
         if(newX>=TILE_SIZE&&newX<=SCREEN_WIDTH-TILE_SIZE*2&&newY>=TILE_SIZE&&newY<=SCREEN_HEIGHT-TILE_SIZE*2)
         {
             x=newX;
             y=newY;
             rect.x=x;
             rect.y=y;
-        }
+        }//check va cham voi bounderies
     }
-
     void shoot()
     {
         if(--shootDelay>0) return;
-        shootDelay=5;
+        shootDelay=300;
         bullets.push_back(Bullet(x+TILE_SIZE/2-5,y+TILE_SIZE/2-5,this->dirX,this->dirY));
     }
     void updateBullets()
@@ -293,6 +290,9 @@ public:
         for (auto& enemy: enemies){
             for (auto& bullet: enemy.bullets){
                 for (auto& wall:walls){
+                        enemy.move(walls);
+                        enemy.shoot();
+                        enemy.updateBullets();
                     if(wall.active&&SDL_HasIntersection(&bullet.rect,&wall.rect)){
                         wall.active=false;
                         bullet.active=false;
@@ -374,6 +374,11 @@ public:
     {
         while (running)
         {
+            for (auto& enemy: enemies){
+                    enemy.move(walls);
+                    enemy.shoot();
+            }
+
             handleEvents ();
             update();
             render ();
