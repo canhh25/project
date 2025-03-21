@@ -286,6 +286,18 @@ public:
                 }
             }
         }
+        for (auto& bullet : player.bullets)
+    {
+        for (auto& enemy : enemies)
+        {
+            if (enemy.active && SDL_HasIntersection(&bullet.rect, &enemy.rect))
+            {
+                enemy.active = false; // Địch bị tiêu diệt
+                bullet.active = false; // Viên đạn biến mất
+                break; // Đạn chỉ có thể trúng một mục tiêu
+            }
+        }
+    }
         for (auto& enemy: enemies){
             for (auto& bullet: enemy.bullets){
                 for (auto& wall:walls){
@@ -322,23 +334,18 @@ public:
                 switch (event.key.keysym.sym)
                 {
                 case SDLK_UP:
-                case SDLK_w:
                     player.move(0,-5,walls);
                     break;
                 case SDLK_DOWN:
-                case SDLK_s:
                     player.move(0,5,walls);
                     break;
                 case SDLK_RIGHT:
-                case SDLK_d:
                     player.move(5,0,walls);
                     break;
                 case SDLK_LEFT:
-                case SDLK_a:
                     player.move(-5,0,walls);
                     break;
                 case SDLK_SPACE:
-                case SDLK_0:
                     player.shoot();
                     break;
                 }
