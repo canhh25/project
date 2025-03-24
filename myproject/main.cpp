@@ -3,12 +3,10 @@
 #include <vector>
 #include <algorithm>
 #include <cstdlib>
+#include "graphics.h"
+#include "defs.h"
 using namespace std;
-const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 600;
-const int TILE_SIZE = 40;
-const int MAP_WIDTH = SCREEN_WIDTH / TILE_SIZE;
-const int MAP_HEIGHT = SCREEN_HEIGHT / TILE_SIZE;
+
 class Wall
 {
 public:
@@ -114,8 +112,15 @@ public:
         }
         bullets.erase(remove_if(bullets.begin(),bullets.end(),[](Bullet&b){return !b.active;}),bullets.end());
     }
+//    SDL_Texture* texture = loadTexture("players_tank.png");
     void render (SDL_Renderer* renderer)
     {
+//        SDL_Rect crop;
+//        if(dirX==0&&dirY==-1)crop = {1,1,40,40};
+//        else if(dirX==0&&dirY==1)crop = {81,1,40,40};
+//        else if(dirX==-1&&dirY==0) crop = {31,1,40,40};
+//        else crop = {121,1,40,40};
+//        renderTextureCopy(texture,x,y,crop);
         SDL_SetRenderDrawColor(renderer,255,255,0,255);
         SDL_RenderFillRect(renderer,&rect);
         for (auto &bullet : bullets)
@@ -299,11 +304,15 @@ public:
         }
     }
         for (auto& enemy: enemies){
+            enemy.shoot();
+            enemy.updateBullets();
+        }
+        for (auto& enemy: enemies){
             for (auto& bullet: enemy.bullets){
                 for (auto& wall:walls){
-                        enemy.move(walls);
-                        enemy.shoot();
-                        enemy.updateBullets();
+                       // enemy.move(walls);
+                       // enemy.shoot();
+                       // enemy.updateBullets();
                     if(wall.active&&SDL_HasIntersection(&bullet.rect,&wall.rect)){
                         bullet.active=false;
                         break;
@@ -375,6 +384,7 @@ public:
         }
         SDL_RenderPresent(renderer);
     }
+  //  SDL_Texture* texture = loadTexture("players_tank");
     void run ()
     {
         while (running)
@@ -387,6 +397,7 @@ public:
             handleEvents ();
             update();
             render ();
+          //  renderTexture(texture,1,1);
             SDL_Delay(16);
         }
     }

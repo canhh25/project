@@ -2,7 +2,23 @@
 1739522132 source:c:\users\huuca\onedrive\desktop\propject\myproject\main.cpp
 	<bits/stdc++.h>
 
-1741009319 source:c:\users\huuca\onedrive\desktop\project\myproject\main.cpp
+1742571638 source:c:\users\huuca\onedrive\desktop\project\myproject\main.cpp
 	<iostream>
 	<SDL.h>
+	<vector>
+	<algorithm>
+	<cstdlib>
+	"graphics.h"
+	"defs.h"
+
+1742571033 source:c:\users\huuca\onedrive\desktop\project\myproject\graphics.cpp
+	"graphics.h"
+	"defs.h"
+
+1742571033 c:\users\huuca\onedrive\desktop\project\myproject\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+
+1742570991 c:\users\huuca\onedrive\desktop\project\myproject\defs.h
 
