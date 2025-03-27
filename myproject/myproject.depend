@@ -5,16 +5,16 @@
 1743085222 source:c:\users\huuca\onedrive\desktop\project\myproject\main.cpp
 	"game.h"
 
-1742986718 source:c:\users\huuca\onedrive\desktop\project\myproject\graphics.cpp
+1743089537 source:c:\users\huuca\onedrive\desktop\project\myproject\graphics.cpp
 	"graphics.h"
-	"defs.h"
 
-1742986718 c:\users\huuca\onedrive\desktop\project\myproject\graphics.h
+1743089635 c:\users\huuca\onedrive\desktop\project\myproject\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_ttf.h>
+	"defs.h"
 
-1743082968 c:\users\huuca\onedrive\desktop\project\myproject\defs.h
+1743087848 c:\users\huuca\onedrive\desktop\project\myproject\defs.h
 
 1743084526 c:\users\huuca\onedrive\desktop\project\myproject\wall.h
 	<SDL.h>
@@ -34,15 +34,15 @@
 	<SDL.h>
 	"defs.h"
 
-1743084227 c:\users\huuca\onedrive\desktop\project\myproject\playertank.h
-	<SDL.h>
+1743088513 c:\users\huuca\onedrive\desktop\project\myproject\playertank.h
 	"defs.h"
 	"bullet.h"
 	<vector>
 	<algorithm>
 	"wall.h"
+	"graphics.h"
 
-1743083993 source:c:\users\huuca\onedrive\desktop\project\myproject\playertank.cpp
+1743090610 source:c:\users\huuca\onedrive\desktop\project\myproject\playertank.cpp
 	"PlayerTank.h"
 
 1743084526 source:c:\users\huuca\onedrive\desktop\project\myproject\enemytank.cpp
@@ -56,7 +56,7 @@
 	<algorithm>
 	"wall.h"
 
-1743085185 c:\users\huuca\onedrive\desktop\project\myproject\game.h
+1743089702 c:\users\huuca\onedrive\desktop\project\myproject\game.h
 	<iostream>
 	<algorithm>
 	<stdlib.h>
@@ -67,7 +67,8 @@
 	"PlayerTank.h"
 	"EnemyTank.h"
 	<vector>
+	"graphics.h"
 
-1743085160 source:c:\users\huuca\onedrive\desktop\project\myproject\game.cpp
+1743089702 source:c:\users\huuca\onedrive\desktop\project\myproject\game.cpp
 	"game.h"
 

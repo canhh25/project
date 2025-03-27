@@ -131,7 +131,7 @@ void Game::generateWalls()
             walls[i].render(renderer);
         }
 
-        player.render(renderer);
+        player.render(renderer,texture);
         for(auto& enemy:enemies){
             enemy.render(renderer);
         }

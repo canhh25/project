@@ -1,12 +1,12 @@
 #ifndef _PLAYERTANK__H_
 #define _PLAYERTANK__H_
 
-#include <SDL.h>
 #include "defs.h"
 #include "bullet.h"
 #include <vector>
 #include <algorithm>
 #include "wall.h"
+#include "graphics.h"
 using namespace std;
 
 class PlayerTank
@@ -28,6 +28,6 @@ public:
     void move (int dx, int dy, const vector <Wall>& walls);
     void shoot();
     void updateBullets();
-    void render (SDL_Renderer* renderer);
+    void render (SDL_Renderer* renderer, SDL_Texture* texture);
 };
 #endif

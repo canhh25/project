@@ -11,6 +11,7 @@
 #include "PlayerTank.h"
 #include "EnemyTank.h"
 #include <vector>
+#include "graphics.h"
 using namespace std;
 class Game
 {
@@ -24,6 +25,8 @@ public:
     vector<EnemyTank> enemies;
     void generateWalls();
     void spawnEnemies();
+    SDL_Texture* texture;
+
     Game ()
     {
 
@@ -39,16 +42,13 @@ public:
             cerr<<"Window could not be created! SDL_Error: "<< SDL_GetError()<<endl;
             running = false;
         }
-        renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-        if (!renderer)
-        {
-            cerr<<" Renderer could not be created! SDL_Error: "<<SDL_GetError()<<endl;
-            running = false;
-        }
+        renderer =  createRenderer(window);
         generateWalls();
         player = PlayerTank(((MAP_WIDTH-1)/2)*TILE_SIZE,(MAP_HEIGHT-2)*TILE_SIZE);
         spawnEnemies();
+        texture = loadTexture(renderer,"players_tank.png");
     }
+
     void update ();
     void render();
     void handleEvents();

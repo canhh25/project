@@ -1,5 +1,6 @@
 #include "PlayerTank.h"
 
+
 void PlayerTank::move (int dx, int dy, const vector <Wall>& walls)
     {
         int newX = x+dx;
@@ -35,10 +36,17 @@ void PlayerTank::move (int dx, int dy, const vector <Wall>& walls)
         bullets.erase(remove_if(bullets.begin(),bullets.end(),[](Bullet&b){return !b.active;}),bullets.end());
     }
 
-    void PlayerTank::render (SDL_Renderer* renderer)
+    void PlayerTank::render (SDL_Renderer* renderer, SDL_Texture* texture)
     {
-        SDL_SetRenderDrawColor(renderer,255,255,0,255);
-        SDL_RenderFillRect(renderer,&rect);
+//        SDL_SetRenderDrawColor(renderer,255,255,0,255);
+//        SDL_RenderFillRect(renderer,&rect);
+        SDL_Rect renderRect = {0,0,40,40};
+        if(dirX==0&&dirY==-5) renderRect.x = 0;
+        else if(dirX==0&&dirY==5) renderRect.x = 80;
+        else if(dirX==-5&&dirY==0) renderRect.x = 120;
+        else if(dirX==5&&dirY==0) renderRect.x = 40;
+        blitRect(renderer,texture,&renderRect,x,y);
+        presentScene(renderer);
         for (auto &bullet : bullets)
         {
             bullet.render(renderer);
