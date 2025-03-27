@@ -10,15 +10,15 @@ SDL_Window* initSDL(int SCREEN_WIDTH, int SCREEN_HEIGHT, const char* WINDOW_TITL
 SDL_Renderer* createRenderer(SDL_Window* window);
 void TTFInit();
 
-void prepareScene(SDL_Texture * background);
-void presentScene();
-SDL_Texture *loadTexture(const char *filename);
-void renderTexture(SDL_Texture *texture, int x, int y);
-void renderTextureCopy(SDL_Texture *texture, int x, int y, SDL_Rect crop);
-TTF_Font* loadFont(const char* path, int size);
-SDL_Texture* renderText(const char* text, TTF_Font* font, SDL_Color textColor);
-void blitRect(SDL_Texture *texture, SDL_Rect *src, int x, int y);
-void quit();
+void prepareScene(SDL_Renderer* renderer, SDL_Texture * background);
+void presentScene(SDL_Renderer* renderer);
+SDL_Texture *loadTexture(SDL_Renderer* renderer, const char *filename);
+void renderTexture(SDL_Renderer* renderer, SDL_Texture *texture, int x, int y);
+void renderTextureCopy(SDL_Renderer* renderer, SDL_Texture *texture, int x, int y, SDL_Rect crop);
+TTF_Font* loadFont(SDL_Renderer* renderer, const char* path, int size);
+SDL_Texture* renderText(SDL_Renderer* renderer, const char* text, TTF_Font* font, SDL_Color textColor);
+void blitRect(SDL_Renderer* renderer, SDL_Texture *texture, SDL_Rect *src, int x, int y);
+void quit(SDL_Renderer* renderer, SDL_Window* window);
 
 #endif // _GRAPHICS__H_
 

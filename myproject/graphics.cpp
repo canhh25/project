@@ -37,19 +37,16 @@ void TTFInit(){
         }
 }
 
-SDL_Window* window = initSDL(SCREEN_WIDTH, SCREEN_HEIGHT, "Mine Sweeper Replica");
-SDL_Renderer *renderer = createRenderer(window);
-
-void prepareScene(SDL_Texture * background){
+void prepareScene(SDL_Renderer* renderer, SDL_Texture * background){
         SDL_RenderClear(renderer);
         SDL_RenderCopy(renderer, background, NULL, NULL);
     }
 
-void presentScene(){
+void presentScene(SDL_Renderer* renderer){
         SDL_RenderPresent(renderer);
     }
 
-SDL_Texture *loadTexture(const char *filename){
+SDL_Texture *loadTexture(SDL_Renderer* renderer, const char *filename){
     SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO, "Loading %s", filename);
 
     SDL_Texture *texture = IMG_LoadTexture(renderer, filename);
@@ -59,7 +56,7 @@ SDL_Texture *loadTexture(const char *filename){
     return texture;
 }
 
-void renderTexture(SDL_Texture *texture, int x, int y){
+void renderTexture(SDL_Renderer* renderer, SDL_Texture *texture, int x, int y){
     SDL_Rect dest;
 
     dest.x = x;
@@ -69,7 +66,7 @@ void renderTexture(SDL_Texture *texture, int x, int y){
     SDL_RenderCopy(renderer, texture, NULL, &dest);
 }
 
-void renderTextureCopy(SDL_Texture *texture, int x, int y, SDL_Rect crop){
+void renderTextureCopy(SDL_Renderer* renderer, SDL_Texture *texture, int x, int y, SDL_Rect crop){
     SDL_Rect dest;
 
     dest.x = x;
@@ -88,7 +85,7 @@ TTF_Font* loadFont(const char* path, int size){
     return gFont;
 }
 
-SDL_Texture* renderText(const char* text, TTF_Font* font, SDL_Color textColor){
+SDL_Texture* renderText(SDL_Renderer* renderer, const char* text, TTF_Font* font, SDL_Color textColor){
     SDL_Surface* textSurface = TTF_RenderText_Solid( font, text, textColor );
     if( textSurface == nullptr ) {
         SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, "Render text surface %s", TTF_GetError());
@@ -104,7 +101,7 @@ SDL_Texture* renderText(const char* text, TTF_Font* font, SDL_Color textColor){
     return texture;
 }
 
-void blitRect(SDL_Texture *texture, SDL_Rect *src, int x, int y){
+void blitRect(SDL_Renderer* renderer, SDL_Texture *texture, SDL_Rect *src, int x, int y){
     SDL_Rect dest;
 
     dest.x = x;
@@ -116,7 +113,7 @@ void blitRect(SDL_Texture *texture, SDL_Rect *src, int x, int y){
 }
 
 
-void quit(){
+void quit(SDL_Renderer* renderer, SDL_Window* window){
     IMG_Quit();
 
     SDL_DestroyRenderer(renderer);
