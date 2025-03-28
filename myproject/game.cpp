@@ -1,14 +1,36 @@
 #include "game.h"
 void Game::generateWalls()
     {
-        for (int i=3; i<MAP_HEIGHT-3; i+=2)
-        {
-            for (int j=3; j<MAP_WIDTH-3; j+=2)
-            {
-                Wall w=Wall{j*TILE_SIZE,i*TILE_SIZE};
-                walls.push_back(w);
-            }
-        }
+//        for (int i=3; i<MAP_HEIGHT-3; i+=2)
+//        {
+//            for (int j=3; j<MAP_WIDTH-3; j+=2)
+//            {
+//                Wall w=Wall{j*TILE_SIZE,i*TILE_SIZE};
+//                walls.push_back(w);
+//            }
+//        }
+    int a[15][20] = { {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                      {0,0,1,0,0,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0},
+                      {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0},
+                      {0,0,1,1,1,0,0,1,1,1,0,0,0,0,0,0,0,1,0,0},
+                      {0,0,1,1,1,0,0,0,1,1,0,0,0,1,1,1,0,0,0,0},
+                      {0,0,0,0,1,0,0,0,0,1,1,0,0,1,1,1,0,0,0,0},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,1,0},
+                      {0,0,1,0,0,1,1,1,0,0,0,0,0,1,1,0,0,0,1,0},
+                      {0,1,0,0,0,0,1,1,1,1,1,0,0,0,1,1,0,0,0,0},
+                      {0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,1,1,0,0,0},
+                      {0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0},
+                      {0,1,1,0,0,0,1,1,1,0,0,0,0,0,0,1,1,1,1,0},
+                      {0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0},
+                      {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+        for(int y=0;y<15;y++)
+            for(int x=0;x<20;x++)
+                if(a[y][x]==1) {
+                    Wall w=Wall{x*TILE_SIZE,y*TILE_SIZE};
+                    walls.push_back(w);
+                }
     }
     void Game::spawnEnemies(){
         enemies.clear();
@@ -71,6 +93,7 @@ void Game::generateWalls()
                     }
                 if(SDL_HasIntersection(&bullet.rect,&player.rect)){
                     running=false;
+                    isWinning = false;
                     return;
                 }
                 }
@@ -79,6 +102,7 @@ void Game::generateWalls()
         enemies.erase(std::remove_if(enemies.begin(),enemies.end(),[](EnemyTank&e){return !e.active;}),enemies.end());
         if(enemies.empty()){
             running=false;
+            isWinning = true;
         }
     }
     void Game::handleEvents()
@@ -118,24 +142,26 @@ void Game::generateWalls()
         SDL_SetRenderDrawColor(renderer, 128, 128, 128, 255); //bouderies
         SDL_RenderClear(renderer); //delete color
         SDL_SetRenderDrawColor(renderer,0,0,0,255);
-        for (int i=1; i<MAP_HEIGHT-1; ++i)
-        {
-            for (int j=1; j<MAP_WIDTH-1; ++j)
-            {
-                SDL_Rect tile = {j * TILE_SIZE, i* TILE_SIZE, TILE_SIZE, TILE_SIZE};
-                SDL_RenderFillRect(renderer, &tile);
-            }
-        }
+        SDL_Rect BGrect = {40,40,720,520};
+        blitRect(renderer,background,&BGrect,40,40);
+//        for (int i=1; i<MAP_HEIGHT-1; ++i)
+//        {
+//            for (int j=1; j<MAP_WIDTH-1; ++j)
+//            {
+//                SDL_Rect tile = {j * TILE_SIZE, i* TILE_SIZE, TILE_SIZE, TILE_SIZE};
+//                SDL_RenderFillRect(renderer, &tile);
+//            }
+//        }
         for (int i=0; i<walls.size(); i++)
         {
-            walls[i].render(renderer);
+            walls[i].render(wallTexture,renderer);
         }
 
         player.render(renderer,texture);
         for(auto& enemy:enemies){
-            enemy.render(renderer);
+            enemy.render(enemy_tank_texture, renderer);
         }
-        SDL_RenderPresent(renderer);
+        presentScene(renderer);
     }
     void Game::run ()
     {
@@ -150,5 +176,23 @@ void Game::generateWalls()
             update();
             render();
             SDL_Delay(16);
+        }
+    }
+    void Game::GameEnd(){
+    if(isWinning){
+        renderTexture(renderer,win,0,0);
+    } else {
+        renderTexture(renderer,loose,0,0);
+    }
+    presentScene(renderer);
+    SDL_Delay(5000);
+    SDL_Event event;
+        while (SDL_PollEvent(&event))
+        {
+            if(event.type ==SDL_QUIT)
+            {
+                running = false;
+            }
+
         }
     }

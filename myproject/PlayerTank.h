@@ -8,7 +8,6 @@
 #include "wall.h"
 #include "graphics.h"
 using namespace std;
-
 class PlayerTank
 {
 public:

@@ -7,6 +7,7 @@
 #include <vector>
 #include <algorithm>
 #include "wall.h"
+#include "graphics.h"
 using namespace std;
 class EnemyTank
 {
@@ -29,7 +30,6 @@ public:
     void move(const vector <Wall> walls);
     void shoot();
     void updateBullets();
-    void render(SDL_Renderer* renderer);
+    void render(SDL_Texture* enemy_tank_texture ,SDL_Renderer* renderer);
 };
-
 #endif

@@ -21,4 +21,4 @@
 
     void blitRect(SDL_Renderer* renderer, SDL_Texture *texture, SDL_Rect *src, int x, int y);
 
-#endif // _GRAPHICS__H_
+#endif

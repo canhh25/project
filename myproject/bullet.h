@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include "defs.h"
+#include "graphics.h"
 class Bullet
 {
 public:

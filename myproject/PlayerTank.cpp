@@ -1,6 +1,4 @@
 #include "PlayerTank.h"
-
-
 void PlayerTank::move (int dx, int dy, const vector <Wall>& walls)
     {
         int newX = x+dx;
@@ -46,7 +44,6 @@ void PlayerTank::move (int dx, int dy, const vector <Wall>& walls)
         else if(dirX==-5&&dirY==0) renderRect.x = 120;
         else if(dirX==5&&dirY==0) renderRect.x = 40;
         blitRect(renderer,texture,&renderRect,x,y);
-        presentScene(renderer);
         for (auto &bullet : bullets)
         {
             bullet.render(renderer);

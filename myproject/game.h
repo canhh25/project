@@ -21,12 +21,17 @@ public:
     bool running;
     vector <Wall> walls;
     PlayerTank player;
-    int enemyNumber=3;
+    int enemyNumber=5;
     vector<EnemyTank> enemies;
     void generateWalls();
     void spawnEnemies();
     SDL_Texture* texture;
-
+    SDL_Texture* wallTexture;
+    SDL_Texture* enemy_tank_texture;
+    SDL_Texture* background;
+    SDL_Texture* win;
+    SDL_Texture* loose;
+    bool isWinning = true;
     Game ()
     {
 
@@ -47,12 +52,18 @@ public:
         player = PlayerTank(((MAP_WIDTH-1)/2)*TILE_SIZE,(MAP_HEIGHT-2)*TILE_SIZE);
         spawnEnemies();
         texture = loadTexture(renderer,"players_tank.png");
+        wallTexture = loadTexture(renderer,"wall.png");
+        enemy_tank_texture =loadTexture (renderer, "enemy_tank.png");
+        background = loadTexture(renderer, "background.png");
+        win = loadTexture(renderer, "win.png");
+        loose = loadTexture (renderer, "loose.png");
     }
 
     void update ();
     void render();
     void handleEvents();
     void run ();
+    void GameEnd();
     ~Game()
     {
         SDL_DestroyRenderer(renderer);

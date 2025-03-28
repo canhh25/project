@@ -3,7 +3,7 @@
 
 #include <SDL.h>
 #include "defs.h"
-
+#include "graphics.h"
 class Wall
 {
 public:
@@ -17,7 +17,7 @@ public:
         active=true;
         rect= {x,y,TILE_SIZE,TILE_SIZE};
     }
-    void render(SDL_Renderer* renderer);
+    void render(SDL_Texture* wallTexture, SDL_Renderer* renderer);
 };
-#endif //
+#endif
 
