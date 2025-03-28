@@ -185,14 +185,31 @@ void Game::generateWalls()
         renderTexture(renderer,loose,0,0);
     }
     presentScene(renderer);
-    SDL_Delay(5000);
     SDL_Event event;
-        while (SDL_PollEvent(&event))
-        {
-            if(event.type ==SDL_QUIT)
-            {
-                running = false;
+    bool waiting = true;
+    while (waiting) {
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                waiting = false;
+                running = false;  // Thoát game luôn nếu nhấn nút đóng cửa sổ
+            } else if (event.type == SDL_KEYDOWN) {
+                waiting = false;  // Thoát vòng lặp khi nhấn bất kỳ phím nào
             }
-
         }
+        SDL_Delay(16);
+     SDL_Event event;
+    bool isWaiting = true;
+    while (isWaiting && running) {  // Thêm điều kiện running để tránh lặp vô hạn nếu game đã kết thúc
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                isWaiting = false;
+                running = false;  // Thoát game nếu đóng cửa sổ
+            }
+            else if (event.type == SDL_KEYDOWN) {  // Nhấn bất kỳ phím nào
+                isWaiting = false;
+            }
+        }
+        SDL_Delay(10);  // Giảm CPU usage
+    }
+}
     }
