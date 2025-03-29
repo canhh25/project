@@ -62,7 +62,7 @@
 	<SDL_mixer.h>
 	"graphics.h"
 
-1743223882 c:\users\huuca\onedrive\desktop\project\myproject\game.h
+1743242443 c:\users\huuca\onedrive\desktop\project\myproject\game.h
 	<iostream>
 	<algorithm>
 	<stdlib.h>
@@ -76,7 +76,7 @@
 	"graphics.h"
 	<SDL_mixer.h>
 
-1743226793 source:c:\users\huuca\onedrive\desktop\project\myproject\game.cpp
+1743242338 source:c:\users\huuca\onedrive\desktop\project\myproject\game.cpp
 	"game.h"
 
 1743221361 source:c:\users\huuca\onedrive\desktop\project\myproject\sound.cpp

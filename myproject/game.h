@@ -33,7 +33,8 @@ public:
     SDL_Texture* win;
     SDL_Texture* loose;
     Mix_Chunk* shootSound;
-    Mix_Music *gMusic;
+    Mix_Music* gMusic;
+    Mix_Chunk* explosion;
     bool isWinning = true;
     Game ()
     {
@@ -66,6 +67,7 @@ public:
         loose = loadTexture (renderer, "loose.png");
         shootSound = loadSound ("shootSound.wav");
         gMusic = loadMusic("gMusic.mp3");
+        explosion = loadSound ("explosion.wav");
     }
     void update ();
     void render();
@@ -79,6 +81,9 @@ public:
         SDL_DestroyTexture(texture);
         SDL_DestroyTexture(enemy_tank_texture);
         SDL_DestroyTexture(wallTexture);
+        Mix_FreeChunk(shootSound);
+        Mix_FreeChunk(explosion);
+        Mix_FreeMusic(gMusic);
         Mix_Quit();
         SDL_Quit();
     }

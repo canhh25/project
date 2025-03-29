@@ -69,6 +69,7 @@ void Game::update ()
         {
             if (enemy.active && SDL_HasIntersection(&bullet.rect, &enemy.rect))
             {
+                play(explosion);
                 enemy.active = false; // địch die
                 bullet.active = false; // đạn biến mất
                 break; // ko cho đạn xuyên qua
@@ -94,12 +95,7 @@ void Game::update ()
                 if(SDL_HasIntersection(&bullet.rect,&player.rect))
                 {
                     bullet.active = false;
-                    player.takeDamage();
-                    if(!player.isAlive())
-                    {
-                        running=false;
-                        isWinning=false;
-                    }
+                    play(explosion);
                 }
             }
         }
