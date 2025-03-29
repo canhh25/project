@@ -192,7 +192,7 @@ void Game::render ()
     {
         walls[i].render(wallTexture,renderer);
     }
-    player.render(renderer,texture);
+    player.render(renderer,PlayerTankTexture);
     for(auto& enemy:enemies)
     {
         enemy.render(EnemyTankTexture, renderer);

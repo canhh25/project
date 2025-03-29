@@ -26,7 +26,7 @@ public:
     vector<EnemyTank> enemies;
     void generateWalls();
     void spawnEnemies();
-    SDL_Texture* texture;
+    SDL_Texture* PlayerTankTexture;
     SDL_Texture* wallTexture;
     SDL_Texture* EnemyTankTexture;
     SDL_Texture* background;
@@ -63,7 +63,7 @@ public:
         generateWalls();
         player = PlayerTank(((MAP_WIDTH-1)/2)*TILE_SIZE,(MAP_HEIGHT-2)*TILE_SIZE);
         spawnEnemies();
-        texture = loadTexture(renderer,"players_tank.png");
+        PlayerTankTexture = loadTexture(renderer,"players_tank.png");
         wallTexture = loadTexture(renderer,"wall.png");
         EnemyTankTexture =loadTexture (renderer, "enemy_tank.png");
         background = loadTexture(renderer, "background.png");
@@ -88,7 +88,7 @@ public:
     {
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
-        SDL_DestroyTexture(texture);
+        SDL_DestroyTexture(PlayerTankTexture);
         SDL_DestroyTexture(EnemyTankTexture);
         SDL_DestroyTexture(wallTexture);
         SDL_DestroyTexture(startScreen);
