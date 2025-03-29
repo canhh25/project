@@ -1,7 +1,7 @@
 # **Battle City Clone - Lập Trình Nâng Cao**
 ## Giới Thiệu
 
-Dự án này là một bản sao (clone) của game Battle City, được phát triển bằng ngôn ngữ C++ cho môn Lập Trình Nâng Cao.
+Dự án này là một clone của game Battle City, được phát triển bằng ngôn ngữ C++ cho môn Lập Trình Nâng Cao.
 
 ## Tính Năng
 
@@ -18,3 +18,7 @@ Dự án này là một bản sao (clone) của game Battle City, được phát
 - Giảm nhạc nền: Phím 9
 
 - Tăng nhạc nền: Phím 0
+
+  ## Người thực hiện
+
+  Nguyễn Hữu Cảnh
