@@ -5,10 +5,10 @@
 1743221292 source:c:\users\huuca\onedrive\desktop\project\myproject\main.cpp
 	"game.h"
 
-1743222968 source:c:\users\huuca\onedrive\desktop\project\myproject\graphics.cpp
+1743223882 source:c:\users\huuca\onedrive\desktop\project\myproject\graphics.cpp
 	"graphics.h"
 
-1743223673 c:\users\huuca\onedrive\desktop\project\myproject\graphics.h
+1743223793 c:\users\huuca\onedrive\desktop\project\myproject\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_ttf.h>
@@ -45,10 +45,9 @@
 	"wall.h"
 	"graphics.h"
 
-1743221361 source:c:\users\huuca\onedrive\desktop\project\myproject\playertank.cpp
+1743224214 source:c:\users\huuca\onedrive\desktop\project\myproject\playertank.cpp
 	"PlayerTank.h"
 	"game.h"
-	"sound.h"
 
 1743155790 source:c:\users\huuca\onedrive\desktop\project\myproject\enemytank.cpp
 	"EnemyTank.h"
@@ -63,7 +62,7 @@
 	<SDL_mixer.h>
 	"graphics.h"
 
-1743223673 c:\users\huuca\onedrive\desktop\project\myproject\game.h
+1743223882 c:\users\huuca\onedrive\desktop\project\myproject\game.h
 	<iostream>
 	<algorithm>
 	<stdlib.h>
@@ -77,7 +76,7 @@
 	"graphics.h"
 	<SDL_mixer.h>
 
-1743222599 source:c:\users\huuca\onedrive\desktop\project\myproject\game.cpp
+1743226793 source:c:\users\huuca\onedrive\desktop\project\myproject\game.cpp
 	"game.h"
 
 1743221361 source:c:\users\huuca\onedrive\desktop\project\myproject\sound.cpp

@@ -25,6 +25,7 @@
 
     void play(Mix_Music *gMusic);
 
-     Mix_Chunk* loadSound(const char* path);
+    Mix_Chunk* loadSound(const char* path);
+
     void play(Mix_Chunk* gChunk);
 #endif

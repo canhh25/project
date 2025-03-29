@@ -1,6 +1,5 @@
 #include "PlayerTank.h"
 #include "game.h"
-#include "sound.h"
 void PlayerTank::move (int dx, int dy, const vector <Wall>& walls)
     {
         int newX = x+dx;

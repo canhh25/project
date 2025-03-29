@@ -4,7 +4,6 @@
         SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, "%s: %s", msg, error);
         SDL_Quit();
     }
-
     SDL_Renderer* createRenderer(SDL_Window* window){
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED |
                                               SDL_RENDERER_PRESENTVSYNC);
@@ -15,7 +14,6 @@
 
     return renderer;
 }
-
     void prepareScene(SDL_Renderer* renderer, SDL_Texture *background) {
         SDL_RenderClear(renderer);
         SDL_RenderCopy(renderer, background, NULL, NULL);
@@ -52,7 +50,7 @@
         SDL_RenderCopy(renderer, texture, src, &dest);
     }
 
-Mix_Music *loadMusic(const char* path)
+    Mix_Music *loadMusic(const char* path)
     {
         Mix_Music *gMusic = Mix_LoadMUS(path);
         if (gMusic == nullptr) {

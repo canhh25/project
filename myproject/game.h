@@ -66,9 +66,7 @@ public:
         loose = loadTexture (renderer, "loose.png");
         shootSound = loadSound ("shootSound.wav");
         gMusic = loadMusic("gMusic.mp3");
-
     }
-
     void update ();
     void render();
     void handleEvents();
