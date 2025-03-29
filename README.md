@@ -19,6 +19,6 @@ Dự án này là một clone của game Battle City, được phát triển b�
 
 - Tăng nhạc nền: Phím 0
 
-  ## Người thực hiện
+## Người thực hiện
 
-  Nguyễn Hữu Cảnh
+                                     Nguyễn Hữu Cảnh
