@@ -21,4 +21,4 @@ Dự án này là một clone của game Battle City, được phát triển b�
 
 ## Người thực hiện
 
-                                     Nguyễn Hữu Cảnh
+  Nguyễn Hữu Cảnh
