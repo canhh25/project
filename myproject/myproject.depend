@@ -8,7 +8,7 @@
 1743247608 source:c:\users\huuca\onedrive\desktop\project\myproject\graphics.cpp
 	"graphics.h"
 
-1743256857 c:\users\huuca\onedrive\desktop\project\myproject\graphics.h
+1743259865 c:\users\huuca\onedrive\desktop\project\myproject\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	"defs.h"
@@ -61,7 +61,7 @@
 	<SDL_mixer.h>
 	"graphics.h"
 
-1743258755 c:\users\huuca\onedrive\desktop\project\myproject\game.h
+1743258924 c:\users\huuca\onedrive\desktop\project\myproject\game.h
 	<iostream>
 	<algorithm>
 	<stdlib.h>
@@ -75,7 +75,7 @@
 	"graphics.h"
 	<SDL_mixer.h>
 
-1743258371 source:c:\users\huuca\onedrive\desktop\project\myproject\game.cpp
+1743260545 source:c:\users\huuca\onedrive\desktop\project\myproject\game.cpp
 	<SDL.h>
 	"game.h"
 

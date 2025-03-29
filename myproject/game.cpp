@@ -32,11 +32,11 @@ void Game::generateWalls()
         {0,0,1,1,1,0,0,0,1,1,0,0,0,1,1,1,0,0,0,0},
         {0,0,0,0,1,0,0,0,0,1,1,0,0,1,1,1,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,1,0},
+        {0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,1,0},
         {0,0,1,0,0,1,1,1,0,0,0,0,0,1,1,0,0,0,1,0},
         {0,1,0,0,0,0,1,1,1,1,1,0,0,0,1,1,0,0,0,0},
         {0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,1,1,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0},
+        {0,0,0,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0},
         {0,1,1,0,0,0,1,1,1,0,0,0,0,0,0,1,1,1,1,0},
         {0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
@@ -94,9 +94,9 @@ void Game::update ()
             if (enemy.active && SDL_HasIntersection(&bullet.rect, &enemy.rect))
             {
                 play(explosion);
-                enemy.active = false; // địch die
-                bullet.active = false; // đạn biến mất
-                break; // ko cho đạn xuyên qua
+                enemy.active = false;
+                bullet.active = false;
+                break;
             }
         }
     }
@@ -107,6 +107,12 @@ void Game::update ()
     }
     for (auto& enemy: enemies)
     {
+        if (enemy.active && SDL_HasIntersection(&player.rect, &enemy.rect)){
+            play(explosion);
+            enemy.active = false;
+            running = false;
+            isWinning=false;
+        }
         for (auto& bullet: enemy.bullets)
         {
             for (auto& wall:walls)

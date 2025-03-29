@@ -97,9 +97,9 @@ public:
         Mix_FreeMusic(gMusic);
         Mix_FreeChunk(winSound);
         Mix_FreeChunk(looseSound);
+        Mix_FreeMusic(waitMusic);
         SDL_Quit();
         Mix_Quit();
-//        TTF_Quit();
     }
 };
 #endif
