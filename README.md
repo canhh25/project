@@ -1,27 +1,20 @@
-#**Battle City Clone - Lập Trình Nâng Cao**
-Giới Thiệu
+# **Battle City Clone - Lập Trình Nâng Cao**
+## Giới Thiệu
 
 Dự án này là một bản sao (clone) của game Battle City, được phát triển bằng ngôn ngữ C++ cho môn Lập Trình Nâng Cao.
 
-Tính Năng
+## Tính Năng
 
-Di chuyển xe tăng và bắn đối thủ.
+- Di chuyển xe tăng và bắn đối thủ.
 
-Hệ thống AI định hướng xe tăng địch.
+- Hệ thống AI định hướng xe tăng địch.
+  
+## Cách Chơi
 
-Nhiều màn chơi khác nhau.
+- Di chuyển: Phím mũi tên 
 
-Hỗ trợ nhiều vũ khí và cải tiến xe tăng.
-Cách Chơi
+- Bắn hạ địch: Phím Space
 
-Di chuyển: Phím mũi tên
+- Giảm nhạc nền: Phím 9
 
-Bắn hạ địch: Phím Space
-
-Giảm nhạc nền: Phím 9
-
-Tăng nhạc nền: Phím 0
-
-Bị địch bắn: Die
-
-Thoát game: ESC
+- Tăng nhạc nền: Phím 0
