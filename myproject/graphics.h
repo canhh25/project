@@ -5,7 +5,7 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include "defs.h"
-
+#include <SDL_mixer.h>
 
     void logErrorAndExit(const char* msg, const char* error);
 
@@ -21,4 +21,10 @@
 
     void blitRect(SDL_Renderer* renderer, SDL_Texture *texture, SDL_Rect *src, int x, int y);
 
+    Mix_Music *loadMusic(const char* path);
+
+    void play(Mix_Music *gMusic);
+
+     Mix_Chunk* loadSound(const char* path);
+    void play(Mix_Chunk* gChunk);
 #endif

@@ -2,19 +2,20 @@
 1739522132 source:c:\users\huuca\onedrive\desktop\propject\myproject\main.cpp
 	<bits/stdc++.h>
 
-1743174813 source:c:\users\huuca\onedrive\desktop\project\myproject\main.cpp
+1743221292 source:c:\users\huuca\onedrive\desktop\project\myproject\main.cpp
 	"game.h"
 
-1743089537 source:c:\users\huuca\onedrive\desktop\project\myproject\graphics.cpp
+1743222968 source:c:\users\huuca\onedrive\desktop\project\myproject\graphics.cpp
 	"graphics.h"
 
-1743174235 c:\users\huuca\onedrive\desktop\project\myproject\graphics.h
+1743223673 c:\users\huuca\onedrive\desktop\project\myproject\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_ttf.h>
 	"defs.h"
+	<SDL_mixer.h>
 
-1743087848 c:\users\huuca\onedrive\desktop\project\myproject\defs.h
+1743177897 c:\users\huuca\onedrive\desktop\project\myproject\defs.h
 
 1743155061 c:\users\huuca\onedrive\desktop\project\myproject\wall.h
 	<SDL.h>
@@ -31,12 +32,12 @@
 1743083537 source:c:\users\huuca\onedrive\desktop\project\myproject\bullet.cpp
 	"bullet.h"
 
-1743153366 c:\users\huuca\onedrive\desktop\project\myproject\bullet.h
+1743177897 c:\users\huuca\onedrive\desktop\project\myproject\bullet.h
 	<SDL.h>
 	"defs.h"
 	"graphics.h"
 
-1743174235 c:\users\huuca\onedrive\desktop\project\myproject\playertank.h
+1743221596 c:\users\huuca\onedrive\desktop\project\myproject\playertank.h
 	"defs.h"
 	"bullet.h"
 	<vector>
@@ -44,22 +45,25 @@
 	"wall.h"
 	"graphics.h"
 
-1743174235 source:c:\users\huuca\onedrive\desktop\project\myproject\playertank.cpp
+1743221361 source:c:\users\huuca\onedrive\desktop\project\myproject\playertank.cpp
 	"PlayerTank.h"
+	"game.h"
+	"sound.h"
 
 1743155790 source:c:\users\huuca\onedrive\desktop\project\myproject\enemytank.cpp
 	"EnemyTank.h"
 
-1743174235 c:\users\huuca\onedrive\desktop\project\myproject\enemytank.h
+1743218760 c:\users\huuca\onedrive\desktop\project\myproject\enemytank.h
 	<SDL.h>
 	"defs.h"
 	"bullet.h"
 	<vector>
 	<algorithm>
 	"wall.h"
+	<SDL_mixer.h>
 	"graphics.h"
 
-1743174813 c:\users\huuca\onedrive\desktop\project\myproject\game.h
+1743223673 c:\users\huuca\onedrive\desktop\project\myproject\game.h
 	<iostream>
 	<algorithm>
 	<stdlib.h>
@@ -71,7 +75,14 @@
 	"EnemyTank.h"
 	<vector>
 	"graphics.h"
+	<SDL_mixer.h>
 
-1743175395 source:c:\users\huuca\onedrive\desktop\project\myproject\game.cpp
+1743222599 source:c:\users\huuca\onedrive\desktop\project\myproject\game.cpp
 	"game.h"
+
+1743221361 source:c:\users\huuca\onedrive\desktop\project\myproject\sound.cpp
+	"sound.h"
+
+1743221361 c:\users\huuca\onedrive\desktop\project\myproject\sound.h
+	<SDL_mixer.h>
 

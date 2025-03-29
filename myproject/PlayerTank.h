@@ -15,12 +15,14 @@ public:
     int dirX,dirY;
     SDL_Rect rect;
     vector<Bullet> bullets;
-    PlayerTank() : x(0), y(0), dirX(0), dirY(-1), rect{0, 0, TILE_SIZE, TILE_SIZE} {}
+    int health;
+    PlayerTank() : x(0), y(0), dirX(0), dirY(-1), rect{0, 0, TILE_SIZE, TILE_SIZE},health(3) {}
     PlayerTank (int startX, int startY)
     {
         x = startX;
         y = startY;
         rect = {x,y,TILE_SIZE, TILE_SIZE};
+        health = 3;
         dirX=0;
         dirY=-1;
     }
@@ -28,5 +30,7 @@ public:
     void shoot();
     void updateBullets();
     void render (SDL_Renderer* renderer, SDL_Texture* texture);
+    void takeDamage();
+    bool isAlive () const {return health>0;}
 };
 #endif

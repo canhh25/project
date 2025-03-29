@@ -7,6 +7,7 @@
 #include <vector>
 #include <algorithm>
 #include "wall.h"
+#include <SDL_mixer.h>
 #include "graphics.h"
 using namespace std;
 class EnemyTank

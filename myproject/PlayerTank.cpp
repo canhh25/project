@@ -1,4 +1,6 @@
 #include "PlayerTank.h"
+#include "game.h"
+#include "sound.h"
 void PlayerTank::move (int dx, int dy, const vector <Wall>& walls)
     {
         int newX = x+dx;
@@ -33,7 +35,10 @@ void PlayerTank::move (int dx, int dy, const vector <Wall>& walls)
         }
         bullets.erase(remove_if(bullets.begin(),bullets.end(),[](Bullet&b){return !b.active;}),bullets.end());
     }
-
+    void PlayerTank::takeDamage(){
+        health--;
+        if(health<0) health =0;
+    }
     void PlayerTank::render (SDL_Renderer* renderer, SDL_Texture* texture)
     {
 //        SDL_SetRenderDrawColor(renderer,255,255,0,255);

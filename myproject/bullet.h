@@ -24,4 +24,4 @@ public:
     void render(SDL_Renderer* renderer);
 };
 
-#endif _BULLET__H_
+#endif

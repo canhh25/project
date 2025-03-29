@@ -1,14 +1,6 @@
 #include "game.h"
 void Game::generateWalls()
     {
-//        for (int i=3; i<MAP_HEIGHT-3; i+=2)
-//        {
-//            for (int j=3; j<MAP_WIDTH-3; j+=2)
-//            {
-//                Wall w=Wall{j*TILE_SIZE,i*TILE_SIZE};
-//                walls.push_back(w);
-//            }
-//        }
     int a[15][20] = { {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                       {0,0,1,0,0,0,1,1,1,0,0,1,1,1,0,0,0,1,0,0},
                       {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0},
@@ -71,9 +63,9 @@ void Game::generateWalls()
         {
             if (enemy.active && SDL_HasIntersection(&bullet.rect, &enemy.rect))
             {
-                enemy.active = false; // Địch bị tiêu diệt
-                bullet.active = false; // Viên đạn biến mất
-                break; // Đạn chỉ có thể trúng một mục tiêu
+                enemy.active = false; // địch die
+                bullet.active = false; // đạn biến mất
+                break; // ko cho đạn xuyên qua
             }
         }
     }
@@ -84,17 +76,17 @@ void Game::generateWalls()
         for (auto& enemy: enemies){
             for (auto& bullet: enemy.bullets){
                 for (auto& wall:walls){
-                       // enemy.move(walls);
-                       // enemy.shoot();
-                       // enemy.updateBullets();
                     if(wall.active&&SDL_HasIntersection(&bullet.rect,&wall.rect)){
                         bullet.active=false;
                         break;
                     }
                 if(SDL_HasIntersection(&bullet.rect,&player.rect)){
-                    running=false;
-                    isWinning = false;
-                    return;
+                    bullet.active = false;
+                    player.takeDamage();
+                    if(!player.isAlive()){
+                        running=false;
+                        isWinning=false;
+                    }
                 }
                 }
             }
@@ -156,7 +148,6 @@ void Game::generateWalls()
         {
             walls[i].render(wallTexture,renderer);
         }
-
         player.render(renderer,texture);
         for(auto& enemy:enemies){
             enemy.render(enemy_tank_texture, renderer);
@@ -165,6 +156,7 @@ void Game::generateWalls()
     }
     void Game::run ()
     {
+        play(gMusic);
         while (running)
         {
             for (auto& enemy: enemies){
@@ -191,25 +183,25 @@ void Game::generateWalls()
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 waiting = false;
-                running = false;  // Thoát game luôn nếu nhấn nút đóng cửa sổ
+                running = false;
             } else if (event.type == SDL_KEYDOWN) {
-                waiting = false;  // Thoát vòng lặp khi nhấn bất kỳ phím nào
+                waiting = false;
             }
         }
         SDL_Delay(16);
      SDL_Event event;
     bool isWaiting = true;
-    while (isWaiting && running) {  // Thêm điều kiện running để tránh lặp vô hạn nếu game đã kết thúc
+    while (isWaiting && running) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 isWaiting = false;
-                running = false;  // Thoát game nếu đóng cửa sổ
+                running = false;
             }
-            else if (event.type == SDL_KEYDOWN) {  // Nhấn bất kỳ phím nào
+            else if (event.type == SDL_KEYDOWN) {
                 isWaiting = false;
             }
         }
-        SDL_Delay(10);  // Giảm CPU usage
+        SDL_Delay(10);
     }
 }
     }

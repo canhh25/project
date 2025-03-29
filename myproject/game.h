@@ -12,6 +12,7 @@
 #include "EnemyTank.h"
 #include <vector>
 #include "graphics.h"
+#include <SDL_mixer.h>
 using namespace std;
 class Game
 {
@@ -31,6 +32,8 @@ public:
     SDL_Texture* background;
     SDL_Texture* win;
     SDL_Texture* loose;
+    Mix_Chunk* shootSound;
+    Mix_Music *gMusic;
     bool isWinning = true;
     Game ()
     {
@@ -47,6 +50,10 @@ public:
             cerr<<"Window could not be created! SDL_Error: "<< SDL_GetError()<<endl;
             running = false;
         }
+        if(Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 ) < 0 ) {
+            logErrorAndExit( "SDL_mixer could not initialize! SDL_mixer Error: %s\n",
+            Mix_GetError() );
+        }
         renderer =  createRenderer(window);
         generateWalls();
         player = PlayerTank(((MAP_WIDTH-1)/2)*TILE_SIZE,(MAP_HEIGHT-2)*TILE_SIZE);
@@ -57,6 +64,9 @@ public:
         background = loadTexture(renderer, "background.png");
         win = loadTexture(renderer, "win.png");
         loose = loadTexture (renderer, "loose.png");
+        shootSound = loadSound ("shootSound.wav");
+        gMusic = loadMusic("gMusic.mp3");
+
     }
 
     void update ();
@@ -68,6 +78,10 @@ public:
     {
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
+        SDL_DestroyTexture(texture);
+        SDL_DestroyTexture(enemy_tank_texture);
+        SDL_DestroyTexture(wallTexture);
+        Mix_Quit();
         SDL_Quit();
     }
 };
