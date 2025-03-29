@@ -28,13 +28,17 @@ public:
     void spawnEnemies();
     SDL_Texture* texture;
     SDL_Texture* wallTexture;
-    SDL_Texture* enemy_tank_texture;
+    SDL_Texture* EnemyTankTexture;
     SDL_Texture* background;
     SDL_Texture* win;
     SDL_Texture* loose;
+    SDL_Texture* startScreen;
     Mix_Chunk* shootSound;
     Mix_Music* gMusic;
     Mix_Chunk* explosion;
+    Mix_Chunk* winSound;
+    Mix_Chunk* looseSound;
+    Mix_Music* waitMusic;
     bool isWinning = true;
     Game ()
     {
@@ -61,31 +65,41 @@ public:
         spawnEnemies();
         texture = loadTexture(renderer,"players_tank.png");
         wallTexture = loadTexture(renderer,"wall.png");
-        enemy_tank_texture =loadTexture (renderer, "enemy_tank.png");
+        EnemyTankTexture =loadTexture (renderer, "enemy_tank.png");
         background = loadTexture(renderer, "background.png");
         win = loadTexture(renderer, "win.png");
         loose = loadTexture (renderer, "loose.png");
+        startScreen = loadTexture (renderer,"startScreen.png");
         shootSound = loadSound ("shootSound.wav");
         gMusic = loadMusic("gMusic.mp3");
         explosion = loadSound ("explosion.wav");
+        winSound = loadSound("winSound.wav");
+        looseSound = loadSound("looseSound.wav");
+        waitMusic = loadMusic("waitMusic.mp3");
+        Mix_VolumeMusic(25);
     }
     void update ();
     void render();
     void handleEvents();
     void run ();
     void GameEnd();
+    void showStartScreen();
     ~Game()
     {
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
         SDL_DestroyTexture(texture);
-        SDL_DestroyTexture(enemy_tank_texture);
+        SDL_DestroyTexture(EnemyTankTexture);
         SDL_DestroyTexture(wallTexture);
+        SDL_DestroyTexture(startScreen);
         Mix_FreeChunk(shootSound);
         Mix_FreeChunk(explosion);
         Mix_FreeMusic(gMusic);
-        Mix_Quit();
+        Mix_FreeChunk(winSound);
+        Mix_FreeChunk(looseSound);
         SDL_Quit();
+        Mix_Quit();
+//        TTF_Quit();
     }
 };
 #endif

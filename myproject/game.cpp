@@ -1,4 +1,28 @@
+#include <SDL.h>
 #include "game.h"
+void Game::showStartScreen(){
+    SDL_Event event;
+    SDL_RenderClear(renderer);
+    renderTexture(renderer,startScreen,0,0);
+    presentScene(renderer);
+    play (waitMusic);
+    while (true) {
+        while (SDL_PollEvent(&event)) {
+            switch (event.type) {
+                case SDL_QUIT:
+                    exit(0);
+                    break;
+                case SDL_KEYDOWN:
+                    Mix_HaltMusic();
+                    return;
+                    break;
+                default:
+                    break;
+            }
+        }
+        SDL_Delay(100);
+    }
+}
 void Game::generateWalls()
 {
     int a[15][20] = { {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -96,6 +120,8 @@ void Game::update ()
                 {
                     bullet.active = false;
                     play(explosion);
+                    running = false;
+                    isWinning=false;
                 }
             }
         }
@@ -156,14 +182,6 @@ void Game::render ()
     SDL_SetRenderDrawColor(renderer,0,0,0,255);
     SDL_Rect BGrect = {40,40,720,520};
     blitRect(renderer,background,&BGrect,40,40);
-//        for (int i=1; i<MAP_HEIGHT-1; ++i)
-//        {
-//            for (int j=1; j<MAP_WIDTH-1; ++j)
-//            {
-//                SDL_Rect tile = {j * TILE_SIZE, i* TILE_SIZE, TILE_SIZE, TILE_SIZE};
-//                SDL_RenderFillRect(renderer, &tile);
-//            }
-//        }
     for (int i=0; i<walls.size(); i++)
     {
         walls[i].render(wallTexture,renderer);
@@ -171,12 +189,13 @@ void Game::render ()
     player.render(renderer,texture);
     for(auto& enemy:enemies)
     {
-        enemy.render(enemy_tank_texture, renderer);
+        enemy.render(EnemyTankTexture, renderer);
     }
     presentScene(renderer);
 }
 void Game::run ()
 {
+
     play(gMusic);
     while (running)
     {
@@ -198,10 +217,12 @@ void Game::GameEnd()
     if(isWinning)
     {
         renderTexture(renderer,win,0,0);
+        if(winSound) play(winSound);
     }
     else
     {
         renderTexture(renderer,loose,0,0);
+        if(looseSound) play(looseSound);
     }
     presentScene(renderer);
     SDL_Event event;

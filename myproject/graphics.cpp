@@ -78,6 +78,7 @@
                            SDL_LOG_PRIORITY_ERROR,
                "Could not load sound! SDL_mixer Error: %s", Mix_GetError());
         }
+        return gChunk;
     }
     void play(Mix_Chunk* gChunk) {
         if (gChunk != nullptr) {
