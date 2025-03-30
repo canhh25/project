@@ -7,7 +7,7 @@ Dự án này là một clone của game Battle City, được phát triển b�
 
 - Di chuyển xe tăng và bắn đối thủ.
 
-- Hệ thống AI định hướng xe tăng địch.
+- Hệ thống AI cơ bản của xe tăng địch.
   
 ## Cách Chơi
 
