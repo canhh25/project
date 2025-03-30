@@ -9,6 +9,8 @@
 #include "wall.h"
 #include <SDL_mixer.h>
 #include "graphics.h"
+#include "PlayerTank.h"
+
 using namespace std;
 class EnemyTank
 {
@@ -24,8 +26,19 @@ public:
         x=startX;
         y=startY;
         rect= {x,y,TILE_SIZE,TILE_SIZE};
-        dirX=0;
-        dirY=0;
+        int r=rand()%4;
+        if(r==0){
+            dirX=0; dirY=5;
+        }
+        if(r==1){
+            dirX=0;dirY=-5;
+        }
+        if(r==2){
+            dirX=5;dirY=0;
+        }
+        if(r==3){
+            dirX=-5; dirY=0;
+        }
         active=true;
     }
     void move(const vector <Wall> walls);
