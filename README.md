@@ -1,4 +1,4 @@
-# **Battle City Clone - Lập Trình Nâng Cao**
+# **Battle City - Lập Trình Nâng Cao**
 ## Giới Thiệu
 
 Dự án này là một clone của game Battle City, được phát triển bằng ngôn ngữ C++ cho môn Lập Trình Nâng Cao.
