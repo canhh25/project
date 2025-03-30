@@ -11,5 +11,3 @@ int main (int argc, char * argv [])
     game.GameEnd();
     return 0;
 }
-
-
