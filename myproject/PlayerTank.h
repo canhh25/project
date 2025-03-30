@@ -30,7 +30,5 @@ public:
     void shoot();
     void updateBullets();
     void render (SDL_Renderer* renderer, SDL_Texture* texture);
-    void takeDamage();
-    bool isAlive () const {return health>0;}
 };
 #endif
