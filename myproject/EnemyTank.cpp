@@ -5,11 +5,11 @@ void EnemyTank::move(const vector <Wall> walls)
         moveDelay=15;
         int newX=x+this->dirX, newY=y+this->dirY;
         SDL_Rect newRect = { newX, newY, TILE_SIZE, TILE_SIZE};
+        int r=rand()%2;
         for (const auto& wall : walls)
         {
             if(wall.active &&SDL_HasIntersection(&newRect,&wall.rect))
             {
-                int r=rand()%2;
                 if(r==0){
                     if (dirX==0&&dirY==-5) {
                         dirX=5; dirY=0;
@@ -47,18 +47,32 @@ void EnemyTank::move(const vector <Wall> walls)
             y=newY;
             rect.x=x;
             rect.y=y;
-        }   else {
-        if (dirX==0&&dirY==-5) {
-        dirX=5; dirY=0;
         }
-        else if (dirX==0&&dirY==5) {
-        dirX=-5; dirY=0;
-        }
-        else if (dirX==5&&dirY==0) {
-        dirX=0; dirY=5;
-        }
-        else if (dirX==-5&&dirY==0) {
-        dirX=0; dirY=-5;}
+        else if(r==0){
+            if (dirX==0&&dirY==-5) {
+            dirX=5; dirY=0;
+            }
+            else if (dirX==0&&dirY==5) {
+            dirX=-5; dirY=0;
+            }
+            else if (dirX==5&&dirY==0) {
+            dirX=0; dirY=5;
+            }
+            else if (dirX==-5&&dirY==0) {
+            dirX=0; dirY=-5;}
+        }else if(r==1){
+            if (dirX==0&&dirY==-5) {
+                    dirX=-5; dirY=0;
+                    }
+                else if (dirX==0&&dirY==5) {
+                        dirX=5; dirY=0;
+                    }
+                else if (dirX==5&&dirY==0) {
+                        dirX=0; dirY=-5;
+                    }
+                else if (dirX==-5&&dirY==0) {
+                        dirX=0; dirY=5;
+                    }
         }
     }
     void EnemyTank::shoot()

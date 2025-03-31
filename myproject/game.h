@@ -92,6 +92,9 @@ public:
         SDL_DestroyTexture(EnemyTankTexture);
         SDL_DestroyTexture(wallTexture);
         SDL_DestroyTexture(startScreen);
+        SDL_DestroyTexture(background);
+        SDL_DestroyTexture(win);
+        SDL_DestroyTexture(loose);
         Mix_FreeChunk(shootSound);
         Mix_FreeChunk(explosion);
         Mix_FreeMusic(gMusic);
@@ -99,7 +102,6 @@ public:
         Mix_FreeChunk(looseSound);
         Mix_FreeMusic(waitMusic);
         SDL_Quit();
-        Mix_Quit();
     }
 };
 #endif

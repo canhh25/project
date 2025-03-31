@@ -127,6 +127,7 @@ void Game::update ()
                 {
                     bullet.active = false;
                     play(explosion);
+                    play(looseSound);
                     running = false;
                     isWinning=false;
                 }
