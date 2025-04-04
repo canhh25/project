@@ -59,14 +59,14 @@ void Game::spawnEnemies()
         bool validPosition=false;
         while(!validPosition)
         {
-            ex=(rand()%(MAP_WIDTH-2)+1)*TILE_SIZE;
-            ey=((rand()%(MAP_HEIGHT-2)+1)/2+1)*TILE_SIZE;
+            ex = (rand()%(MAP_WIDTH-2)+1)*TILE_SIZE;
+            ey = ((rand()%(MAP_HEIGHT-2)+1)/2+1)*TILE_SIZE;
             validPosition=true;
             for (const auto&wall:walls)
             {
                 if(wall.active&&wall.x==ex&&wall.y==ey)
                 {
-                    validPosition=false;
+                    validPosition = false;
                     break;
                 }
             }
@@ -220,7 +220,6 @@ void Game::run ()
             enemy.move(walls);
             enemy.shoot();
         }
-
         handleEvents ();
         update();
         render();
