@@ -62,7 +62,7 @@
 	"graphics.h"
 	"PlayerTank.h"
 
-1743651170 c:\users\huuca\onedrive\desktop\project\myproject\game.h
+1743775420 c:\users\huuca\onedrive\desktop\project\myproject\game.h
 	<iostream>
 	<algorithm>
 	<stdlib.h>
@@ -76,7 +76,7 @@
 	"graphics.h"
 	<SDL_mixer.h>
 
-1743762829 source:c:\users\huuca\onedrive\desktop\project\myproject\game.cpp
+1743763161 source:c:\users\huuca\onedrive\desktop\project\myproject\game.cpp
 	<SDL.h>
 	"game.h"
 
