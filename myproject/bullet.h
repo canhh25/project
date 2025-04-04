@@ -1,8 +1,6 @@
 #ifndef _BULLET__H_
 #define _BULLET__H_
 
-#include <SDL.h>
-#include "defs.h"
 #include "graphics.h"
 class Bullet
 {

@@ -1,7 +1,6 @@
 #ifndef _PLAYERTANK__H_
 #define _PLAYERTANK__H_
 
-#include "defs.h"
 #include "bullet.h"
 #include <vector>
 #include <algorithm>

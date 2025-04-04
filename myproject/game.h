@@ -3,16 +3,11 @@
 
 #include <iostream>
 #include <algorithm>
-#include <stdlib.h>
-#include <SDL.h>
-#include "defs.h"
-#include "wall.h"
 #include "bullet.h"
 #include "PlayerTank.h"
 #include "EnemyTank.h"
 #include <vector>
 #include "graphics.h"
-#include <SDL_mixer.h>
 using namespace std;
 class Game
 {

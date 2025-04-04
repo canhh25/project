@@ -1,13 +1,10 @@
 #ifndef _ENEMYTANK__H_
 #define _ENEMYTANK__H_
 
-#include <SDL.h>
-#include "defs.h"
 #include "bullet.h"
 #include <vector>
 #include <algorithm>
 #include "wall.h"
-#include <SDL_mixer.h>
 #include "graphics.h"
 #include "PlayerTank.h"
 

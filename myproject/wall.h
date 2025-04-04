@@ -1,8 +1,6 @@
 #ifndef _WALL__H_
 #define _WALL__H_
 
-#include <SDL.h>
-#include "defs.h"
 #include "graphics.h"
 class Wall
 {
