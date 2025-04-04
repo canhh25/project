@@ -74,6 +74,16 @@ void Game::spawnEnemies()
         enemies.push_back(EnemyTank(ex,ey));
     }
 }
+
+void Game::resetGame()
+{
+    Mix_HaltMusic();
+    Mix_HaltChannel(-1);
+    spawnEnemies();
+    player = PlayerTank(((MAP_WIDTH-1)/2)*TILE_SIZE,(MAP_HEIGHT-2)*TILE_SIZE);
+    running = true;
+}
+
 void Game::update ()
 {
     player.updateBullets();
@@ -173,10 +183,10 @@ void Game::handleEvents()
                 player.shoot();
                 play(shootSound);
                 break;
-            case SDLK_9:  // Giảm âm lượng
+            case SDLK_9:
                 Mix_VolumeMusic(Mix_VolumeMusic(-1) - 16);
                 break;
-            case SDLK_0:  // Tăng âm lượng
+            case SDLK_0:
                 Mix_VolumeMusic(Mix_VolumeMusic(-1) + 16);
                 break;
             }
@@ -266,7 +276,7 @@ void Game::GameEnd()
                     isWaiting = false;
                 }
             }
-            SDL_Delay(10);
+            SDL_Delay(16);
         }
     }
 }

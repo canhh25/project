@@ -47,8 +47,7 @@ void EnemyTank::move(const vector <Wall> walls)
             y=newY;
             rect.x=x;
             rect.y=y;
-        }
-        else if(r==0){
+        } else if(r==0){
             if (dirX==0&&dirY==-5) {
             dirX=5; dirY=0;
             }

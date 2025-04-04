@@ -2,7 +2,7 @@
 1739522132 source:c:\users\huuca\onedrive\desktop\propject\myproject\main.cpp
 	<bits/stdc++.h>
 
-1743312136 source:c:\users\huuca\onedrive\desktop\project\myproject\main.cpp
+1743651215 source:c:\users\huuca\onedrive\desktop\project\myproject\main.cpp
 	"game.h"
 
 1743312136 source:c:\users\huuca\onedrive\desktop\project\myproject\graphics.cpp
@@ -62,7 +62,7 @@
 	"graphics.h"
 	"PlayerTank.h"
 
-1743441884 c:\users\huuca\onedrive\desktop\project\myproject\game.h
+1743651170 c:\users\huuca\onedrive\desktop\project\myproject\game.h
 	<iostream>
 	<algorithm>
 	<stdlib.h>
@@ -76,7 +76,7 @@
 	"graphics.h"
 	<SDL_mixer.h>
 
-1743441884 source:c:\users\huuca\onedrive\desktop\project\myproject\game.cpp
+1743756713 source:c:\users\huuca\onedrive\desktop\project\myproject\game.cpp
 	<SDL.h>
 	"game.h"
 

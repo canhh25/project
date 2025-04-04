@@ -2,12 +2,16 @@
 using namespace std;
 int main (int argc, char * argv [])
 {
+
     Game game;
-    game.showStartScreen();
-    if (game.running)
-    {
-        game.run();
+    while(true){
+        game.resetGame();
+        game.showStartScreen();
+        if (game.running)
+        {
+            game.run();
+        }
+        game.GameEnd();
     }
-    game.GameEnd();
     return 0;
 }

@@ -78,6 +78,7 @@ public:
         waitMusic = loadMusic("waitMusic.mp3");
         Mix_VolumeMusic(25);
     }
+    void resetGame();
     void update ();
     void render();
     void handleEvents();
