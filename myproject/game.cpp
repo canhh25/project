@@ -74,7 +74,6 @@ void Game::spawnEnemies()
         enemies.push_back(EnemyTank(ex,ey));
     }
 }
-
 void Game::resetGame()
 {
     Mix_HaltMusic();
@@ -83,7 +82,6 @@ void Game::resetGame()
     player = PlayerTank(((MAP_WIDTH-1)/2)*TILE_SIZE,(MAP_HEIGHT-2)*TILE_SIZE);
     running = true;
 }
-
 void Game::update ()
 {
     player.updateBullets();

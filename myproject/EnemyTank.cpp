@@ -39,7 +39,7 @@ void EnemyTank::move(const vector <Wall> walls)
                 }
                 return;
             }
-        }//check va cham voi tuong
+        }
         if(newX>=TILE_SIZE&&newX<=SCREEN_WIDTH-TILE_SIZE*2&&newY>=TILE_SIZE&&newY<=SCREEN_HEIGHT-TILE_SIZE*2)
         {
 
@@ -62,16 +62,13 @@ void EnemyTank::move(const vector <Wall> walls)
         }else if(r==1){
             if (dirX==0&&dirY==-5) {
                     dirX=-5; dirY=0;
-                    }
-                else if (dirX==0&&dirY==5) {
-                        dirX=5; dirY=0;
-                    }
-                else if (dirX==5&&dirY==0) {
+                } else if (dirX==0&&dirY==5) {
+                    dirX=5; dirY=0;
+                } else if (dirX==5&&dirY==0) {
                         dirX=0; dirY=-5;
-                    }
-                else if (dirX==-5&&dirY==0) {
+                } else if (dirX==-5&&dirY==0) {
                         dirX=0; dirY=5;
-                    }
+                }
         }
     }
     void EnemyTank::shoot()
@@ -90,13 +87,11 @@ void EnemyTank::move(const vector <Wall> walls)
     }
     void EnemyTank::render(SDL_Texture* enemy_tank_texture, SDL_Renderer* renderer)
     {
-        //SDL_SetRenderDrawColor(renderer, 255,0,255,255);
-        //SDL_RenderFillRect(renderer,&rect);
-         SDL_Rect renderRect = {0,0,40,40};
+        SDL_Rect renderRect = {0,0,40,40};
         if(dirX==0&&dirY==-5) renderRect.x = 0;
+        else if(dirX==5&&dirY==0) renderRect.x = 40;
         else if(dirX==0&&dirY==5) renderRect.x = 80;
         else if(dirX==-5&&dirY==0) renderRect.x = 120;
-        else if(dirX==5&&dirY==0) renderRect.x = 40;
         blitRect(renderer,enemy_tank_texture,&renderRect,x,y);
         for (auto &bullet: bullets)
         {

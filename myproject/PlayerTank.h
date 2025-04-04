@@ -15,14 +15,12 @@ public:
     int dirX,dirY;
     SDL_Rect rect;
     vector<Bullet> bullets;
-    int health;
-    PlayerTank() : x(0), y(0), dirX(0), dirY(-1), rect{0, 0, TILE_SIZE, TILE_SIZE},health(3) {}
+    PlayerTank() : x(0), y(0), dirX(0), dirY(-1), rect{0, 0, TILE_SIZE, TILE_SIZE} {}
     PlayerTank (int startX, int startY)
     {
         x = startX;
         y = startY;
         rect = {x,y,TILE_SIZE, TILE_SIZE};
-        health = 3;
         dirX=0;
         dirY=-1;
     }
