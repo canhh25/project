@@ -76,8 +76,9 @@ void Game::spawnEnemies()
 }
 void Game::resetGame()
 {
-    Mix_HaltMusic();
     Mix_HaltChannel(-1);
+    Mix_HaltMusic();
+    enemies.clear();
     spawnEnemies();
     player = PlayerTank(((MAP_WIDTH-1)/2)*TILE_SIZE,(MAP_HEIGHT-2)*TILE_SIZE);
     running = true;
